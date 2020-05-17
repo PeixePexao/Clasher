@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Transactions;
 
@@ -8,31 +8,32 @@ namespace Clasher
     {
         static void Main(string[] args)
         {
-            
+
             double[] quadrados = new double[10000];
-            double[] xvxmu = new double[10000];
+
             for (int i = 0; i < 10000; i++)
             {
                 quadrados[i] = Math.Pow(i, 2);
-                
+
             }
             Console.WriteLine("Quadrados Gerados!");
             System.Threading.Thread.Sleep(2000);
-            for (int i = 0; i < 10000; i++)
+            for (int ii = 0; ii < 10000; ii++)
             {
-                xvxmu[i] = Math.Pow(i, 2) + Math.Pow(i - 1, 2);
-            }
-            Console.WriteLine("x² + (x - 1)² gerados!");
-            System.Threading.Thread.Sleep(2000);
-            var intersect = quadrados.Intersect(xvxmu);
+                double xvxmu = (Math.Pow(ii, 2) + Math.Pow(ii - 1, 2));
 
-            foreach(double res in intersect)
-            {
-                Console.WriteLine(res);
+                foreach (double x in quadrados)
+                {
+                    if (xvxmu == x)
+                    {
+                        Console.WriteLine("Match (" + ii + " , " + Math.Sqrt(x) + ")");
+                    }
+
+                }
+
+
             }
 
-            
         }
-
     }
 }
